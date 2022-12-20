@@ -12,13 +12,15 @@ class FormField {
     validate = () => {
         switch(this.type) {
             case 'password':
-                break;
+                if(!this.checkTextLength()) return false;
+                if(!this.checkValidPassword()) return false;
+                return true;
             case 'text':
-                    if(!this.checkTextLength()) return false;
-                    return true;
-                break;
+                if(!this.checkTextLength()) return false;
+                return true;
             case 'email':
-                break;
+                if(!this.checkEmail()) return false;
+                return true;
         }
 
         return false;
@@ -39,17 +41,44 @@ class FormField {
         }
     }
 
+    checkEmail = () => {
+        const re = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+
+        if(re.test(this.formField.value.trim())) {
+          this.showSuccess();
+          return true;
+        } else {
+          this.showError('Wpisz prawidłowy e-mail.');
+          return false;
+        }
+    }
+
+    checkValidPassword = () => {
+        if (!this.matchWithPasswordId) return true;
+        const matchWith = document.querySelector(this.matchWithPasswordId);
+
+        if (this.formField.value.length > 0 && this.formField.value === matchWith.value) {
+            this.showSuccess();
+            return true;
+        } else {
+            this.showError('Hasła muszą się zgadzać.');
+            return false;
+        }
+    }
+
+
+
     showError = (msg) => {
         this.errorMsgEl.innerHTML = msg;
         this.errorMsgEl.classList.add('error');
         this.formField.classList.add('error');
-        if (this.errorMsgEl.classList.contains('success')) this.errorMsgEL.classList.remove('success');
+        this.errorMsgEl.classList.remove('success');
         this.formField.classList.remove('success');
     }
 
     showSuccess = () => {
         this.errorMsgEl.innerHTML = '';
-        this.errorMsgEL.classList.remove('error');
+        this.errorMsgEl.classList.remove('error');
         this.formField.classList.remove('error');
         this.errorMsgEl.classList.add('success');
         this.formField.classList.add('success');
