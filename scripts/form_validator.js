@@ -16,8 +16,6 @@ class FormValidator {
             minlength: 8, maxlength: 100, matchWithPasswordId: '#password'
         });
 
-        console.log(this.formFields);
-
         this.init();
     }
 
