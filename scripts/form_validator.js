@@ -2,21 +2,28 @@ class FormValidator {
     constructor() {
         this.formFields = [];
 
-        this.form = document.getElementById('form');
-        this.addFormField('#username', {
-            minlength: 4, maxlength: 20
-        });
-        this.addFormField('#email', {
-            minlength: 5, maxlength: 100
-        });
-        this.addFormField('#password', {
-            minlength: 8, maxlength: 100
-        });
-        this.addFormField('#password2', {
-            minlength: 8, maxlength: 100, matchWithPasswordId: '#password'
-        });
+        this.form = document.getElementById("form");
+        this.processForm();
 
         this.init();
+    }
+
+    processForm = () => {
+        this.form.querySelectorAll('input').forEach( element => {
+            let minlength = element.getAttribute('minlength');
+            if (!minlength) minlength = undefined;
+
+            let maxlength = element.getAttribute('maxlength');
+            if (!maxlength) maxlength = undefined;
+
+            let matchWithPasswordId = element.getAttribute('data-match-with-password-id');
+            if (!matchWithPasswordId) matchWithPasswordId = undefined;
+
+            this.addFormField(`#${element.id}`, {
+                minlength: minlength, maxlength: maxlength,
+                matchWithPasswordId: matchWithPasswordId
+            });
+        });
     }
 
     addFormField = (cssSelector, options) => {

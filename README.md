@@ -1,7 +1,7 @@
 # Validable form (HTML5, CSS3, vanilla JS)
 
 ## About
-This is very simple formular with JS validation (without HTML5 validation).
+This is a very simple formular with JS validation (without HTML5 validation).
 Labels, messages and all user data are described in polish.
 
 ## Instalation
@@ -29,27 +29,30 @@ If you need to adjust the form to your website just change the value of those va
 
 ### Form fields
 
-You can add your own form fields to validate. After HTML adding remember to add an ID and validation properties to constructor in **form_validators.js**.
+You can add your own form fields to validate. Remember to add input properties for validate.
+Currently these are 3 validable properties: minlength, maxlength and matchWithPasswordId.
 
-```JS
-class FormValidator {
-    constructor() {
-        this.formFields = [];
+```HTML
+<div class="field-control">
+    <label for="username">Nazwa użytkownika</label>
+    <input
+    type="text"
+    id="username"
+    placeholder="Wpisz nazwę użytkownika"
 
-        this.form = document.getElementById('form');
-        this.addFormField('#username', {
-            minlength: 4, maxlength: 20
-        });
-        this.addFormField('#email', {
-            minlength: 5, maxlength: 100
-        });
-        this.addFormField('#password', {
-            minlength: 8, maxlength: 100
-        });
-        this.addFormField('#password2', {
-            minlength: 8, maxlength: 100, matchWithPasswordId: '#password'
-        });
+    <!-- FOR VALIDATION -->
+    minlength="3"
+    maxlength="30"
 
-        this.init();
-    }
+    />
+    <span>Błąd</span>
+</div>
+```
+### Default properties
+
+If you won't add input properties that input will be validated by default (minlength = 3, maxlength = 100).
+You can change the default properties: see 2nd line in **form_fields.js**.
+
+```JavaScript
+constructor(formFieldSelector, {minlength = 3, maxlength = 100, errorMsgSelector, matchWithPasswordId})
 ```
