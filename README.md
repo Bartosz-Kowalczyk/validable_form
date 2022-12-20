@@ -1,8 +1,13 @@
 # Validable form (HTML5, CSS3, vanilla JS)
 
+## About
+This is very simple formular with JS validation (without HTML5 validation).
+Labels, messages and all user data are described in polish.
+
 ## Instalation
 
-Just copy the code to your website. It's made with HTML5, CSS3 and vanilla JS only.
+Just copy the code to your website.
+It's made with HTML5, CSS3 and vanilla JS only.
 No framework and/or libraries needed.
 
 ## Customization
