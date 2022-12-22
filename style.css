@@ -116,22 +116,27 @@ h1 {
   background-color: var(--color-form);
 }
 
-.loader.active {
+.loader {
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.849);
+  background-color: var(--color-body);
   bottom: 0;
-  display: flex;
+  display: none;
   height: 100%;
   justify-content: center;
   position: fixed;
   width: 100%;
+  z-index: 10;
+}
+
+.loader.active {
+  display: flex;
 }
 
 .circle {
   animation: spin 2s linear infinite;
   border: 15px solid #4E5D6C;
   border-radius: 50%;
-  border-top: 15px solid var(--color-form-bg);
+  border-top: 15px solid var(--color-text);
   height: 100px;
   width: 100px;
   display: none;

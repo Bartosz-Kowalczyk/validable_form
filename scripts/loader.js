@@ -1,19 +1,11 @@
-class PageLoader {
-
-    constructor() {
-    }
-
-    init() {
-        window.addEventListener('load', this.changeVisibility);
-    }
-
-    changeVisibility() {
+function changeVisibility() {
+    setTimeout(() => {
         document.getElementById('container').classList.add('active');
         document.getElementById('loader').classList.remove('active');
         document.getElementById('circle').classList.remove('active');
-    }
+    }, 2000);
 
-}
+};
 
-const pageLoader = new PageLoader();
-pageLoader.init();
+window.addEventListener('load', changeVisibility);
+
