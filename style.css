@@ -134,7 +134,7 @@ h1 {
 
 .circle {
   animation: spin 2s linear infinite;
-  border: 15px solid #4E5D6C;
+  border: 15px solid #41474e;
   border-radius: 50%;
   border-top: 15px solid var(--color-text);
   height: 100px;
