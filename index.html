@@ -8,7 +8,7 @@
     <title>Formular</title>
   </head>
   <body>
-    <div class="container">
+    <div class="container" id="container">
       <form novalidate id="form" class="registration-form">
         <h1>Rejestracja</h1>
         <div class="field-control">
@@ -57,7 +57,11 @@
         <button class="register-button" type="submit">Zarejestruj się</button>
       </form>
     </div>
+    <div class="loader active" id="loader">
+      <span class="circle active" id="circle"></span>
+    </div>
 
+    <script src="./scripts/loader.js"></script>
     <script src="./scripts/form_field.js"></script>
     <script src="./scripts/form_validator.js"></script>
     <script src="./scripts/app.js"></script>
